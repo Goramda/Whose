@@ -5,7 +5,7 @@ const postSchema = mongoose.Schema({
         type : String,
         required : true
     },
-    auther : {
+    author : {
         type : mongoose.Schema.Types.ObjectId, 
         ref : 'user',
         required :true
@@ -15,6 +15,13 @@ const postSchema = mongoose.Schema({
     },
     detail : {
         type : String
+    },
+    comment :{
+        type : String
+    },
+    post :{
+        type : String,
+        required : true
     }
     // image : {
     //     type : 

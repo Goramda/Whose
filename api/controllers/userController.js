@@ -78,6 +78,7 @@ exports.register = (req,res,next)=>{
                                 res.status(201).json({
                                     message : "Create user successfully",
                                     token ,
+                                    _id,
                                     result  
 
                                 })

@@ -78,7 +78,6 @@ exports.register = (req,res,next)=>{
                                 res.status(201).json({
                                     message : "Create user successfully",
                                     token ,
-                                    _id,
                                     result  
 
                                 })
@@ -98,6 +97,24 @@ exports.register = (req,res,next)=>{
             res.status(500).json({
                 message : "Something went wrong",
                 error : err
+            })
+        })
+    }
+
+    exports.profile = (req,res,next)=>{
+        userSchema
+        .find({_id:req.params.userid})
+        .exec()
+        .then(docs=>{
+            res.status(200).json({
+                fName : docs[0].fName,
+                lName : docs[0].lName
+            })
+        })
+        .catch(err=>{
+            res.status(500).json({
+                message : "User not found",
+                erorr : err
             })
         })
     }

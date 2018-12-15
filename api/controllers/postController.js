@@ -3,14 +3,38 @@ const postSchema = require("../model/postModel")
 const userSchema = require("../model/userModel")
 
 exports.getAllFound =(req,res,next)=>{
-    res.status(200).json({
-        message : "GetAllFound"
+    postSchema
+    .find({post:1})
+    .exec()
+    .then(result=>{
+        res.status(200).json({
+            result
+        })
+
+    })
+    .catch(err=>{
+        res.status(500).json({
+            message : "Unifined",
+            error : err
+        })
     })
 }
 
 exports.getAllFind =(req,res,next)=>{
-    res.status(200).json({
-        message : "GetAllFind"
+    postSchema
+    .find({post:2})
+    .exec()
+    .then(result=>{
+        res.status(200).json({
+            result
+        })
+
+    })
+    .catch(err=>{
+        res.status(500).json({
+            message : "Unifined",
+            error : err
+        })
     })
 }
 
@@ -57,5 +81,11 @@ exports.postsDetail =(req,res,next)=>{
             message : "Internal Server Error",
             err : err
         })
+    })
+}
+
+exports.getDetail = (req,res,next)=>{
+    res.status(200).json({
+        message : "ShowDetail"
     })
 }

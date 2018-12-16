@@ -22,6 +22,10 @@ const postSchema = mongoose.Schema({
     post :{
         type : String,
         required : true
+    },
+    datePost :{
+        type : Date,
+        required : true
     }
     // image : {
     //     type : 

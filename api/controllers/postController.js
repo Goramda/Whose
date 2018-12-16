@@ -15,7 +15,8 @@ exports.getAllFound =(req,res,next)=>{
                 return{
                     title :doc.title,
                     author :doc.author,
-                    datePost : doc.datePost
+                    datePost : doc.datePost,
+                    tag : doc.tag
                 }
             })
         })
@@ -41,7 +42,8 @@ exports.getAllFind =(req,res,next)=>{
                 return{
                     title :doc.title,
                     author :doc.author,
-                    datePost : doc.datePost
+                    datePost : doc.datePost,
+                    tag : doc.tag
                 }
             })
         })
@@ -139,7 +141,8 @@ exports.getFoundKey=(req,res,next)=>{
                 return{
                     title :doc.title,
                     author :doc.author,
-                    datePost : doc.datePost
+                    datePost : doc.datePost,
+                    tag : doc.tag
                 }
             })
         })
@@ -164,7 +167,8 @@ exports.getFoundCard=(req,res,next)=>{
                 return{
                     title :doc.title,
                     author :doc.author,
-                    datePost : doc.datePost
+                    datePost : doc.datePost,
+                    tag : doc.tag
                 }
             })
         })
@@ -189,7 +193,8 @@ exports.getFoundWallet=(req,res,next)=>{
                 return{
                     title :doc.title,
                     author :doc.author,
-                    datePost : doc.datePost
+                    datePost : doc.datePost,
+                    tag : doc.tag
                 }
             })
         })
@@ -214,7 +219,8 @@ exports.getFoundPhone=(req,res,next)=>{
                 return{
                     title :doc.title,
                     author :doc.author,
-                    datePost : doc.datePost
+                    datePost : doc.datePost,
+                    tag : doc.tag
                 }
             })
         })
@@ -239,7 +245,8 @@ exports.getFoundOther=(req,res,next)=>{
                 return{
                     title :doc.title,
                     author :doc.author,
-                    datePost : doc.datePost
+                    datePost : doc.datePost,
+                    tag : doc.tag
                 }
             })
         })
@@ -265,7 +272,8 @@ exports.getFindKey=(req,res,next)=>{
                 return{
                     title :doc.title,
                     author :doc.author,
-                    datePost : doc.datePost
+                    datePost : doc.datePost,
+                    tag : doc.tag
                 }
             })
         })
@@ -290,7 +298,8 @@ exports.getFindCard=(req,res,next)=>{
                 return{
                     title :doc.title,
                     author :doc.author,
-                    datePost : doc.datePost
+                    datePost : doc.datePost,
+                    tag : doc.tag
                 }
             })
         })
@@ -315,7 +324,8 @@ exports.getFindWallet=(req,res,next)=>{
                 return{
                     title :doc.title,
                     author :doc.author,
-                    datePost : doc.datePost
+                    datePost : doc.datePost,
+                    tag : doc.tag
                 }
             })
         })
@@ -340,7 +350,8 @@ exports.getFindPhone=(req,res,next)=>{
                 return{
                     title :doc.title,
                     author :doc.author,
-                    datePost : doc.datePost
+                    datePost : doc.datePost,
+                    tag : doc.tag
                 }
             })
         })
@@ -365,7 +376,8 @@ exports.getFindOther=(req,res,next)=>{
                 return{
                     title :doc.title,
                     author :doc.author,
-                    datePost : doc.datePost
+                    datePost : doc.datePost,
+                    tag : doc.tag
                 }
             })
         })

@@ -5,7 +5,6 @@ const jwtDecode = require('jwt-decode');
 exports.getAllFound =(req,res,next)=>{
     postSchema
     .find({post:1})
-    .select('title author')
     .populate('author' , 'fName')
     .exec()
     .then(result=>{

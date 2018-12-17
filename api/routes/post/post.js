@@ -2,8 +2,8 @@ const express = require('express');
 const router = express.Router()
 const postController = require('../../controllers/postController');
 
-router.get('/1',postController.getAllFound)
-router.get('/2',postController.getAllFind)
+router.get('/found',postController.getAllFound)
+router.get('/find',postController.getAllFind)
 router.post('/',postController.postsDetail)
 router.get('/detail/:postID',postController.getDetail)
 

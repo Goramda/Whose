@@ -15,6 +15,7 @@
     "express": "^4.16.4",
     "fs": "0.0.1-security",
     "jsonwebtoken": "^8.4.0",
+    "jwt-decode": "^2.2.0",
     "mongoose": "^5.3.16",
     "nodemon": "^1.18.8"
   }

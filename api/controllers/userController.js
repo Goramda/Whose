@@ -3,6 +3,7 @@ const userSchema = require('../model/userModel')
 const bcrypt = require("bcrypt-nodejs")
 const salt = bcrypt.hashSync("Whose")
 const jwt = require('jsonwebtoken')
+const jwtDecode = require('jwt-decode');
 
 exports.login = (req,res,next)=>{
     userSchema
@@ -102,8 +103,18 @@ exports.register = (req,res,next)=>{
     }
 
     exports.profile = (req,res,next)=>{
+        let bearerToken = req.headers["authorization"]
+        let myUserId = ""
+        if (typeof bearerToken !== "undefined"){
+            const bearer = bearerToken.split(" ")
+            
+            const token = bearer[1]
+            
+             myUserId = jwtDecode(token)
+            console.log(myUserId)
+        }
         userSchema
-        .find({_id:req.params.userid})
+        .find({_id:myUserId.userId})
         .exec()
         .then(docs=>{
             res.status(200).json({

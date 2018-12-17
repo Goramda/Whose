@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const postSchema = require("../model/postModel")
 const userSchema = require("../model/userModel")
-
+const jwtDecode = require('jwt-decode');
 exports.getAllFound =(req,res,next)=>{
     postSchema
     .find({post:1})
@@ -13,6 +13,7 @@ exports.getAllFound =(req,res,next)=>{
             count : result.length,
             event : result.map(doc =>{
                 return{
+                    postId : doc._id,
                     title :doc.title,
                     author :doc.author,
                     datePost : doc.datePost,
@@ -40,6 +41,7 @@ exports.getAllFind =(req,res,next)=>{
             count : result.length,
             event : result.map(doc =>{
                 return{
+                    postId : doc._id,
                     title :doc.title,
                     author :doc.author,
                     datePost : doc.datePost,
@@ -59,8 +61,18 @@ exports.getAllFind =(req,res,next)=>{
 
 exports.postsDetail =(req,res,next)=>{
     // req.headers.authorization.slice(8)
+    let bearerToken = req.headers["authorization"]
+    let myUserId = ""
+    if (typeof bearerToken !== "undefined"){
+        const bearer = bearerToken.split(" ")
+        
+        const token = bearer[1]
+        
+         myUserId = jwtDecode(token)
+        console.log(myUserId)
+    }
     userSchema
-    .find({_id : req.body.userID})
+    .find({_id : myUserId.userId})
     .exec()
     .then(user=>{
         if(user.length == 0){
@@ -68,13 +80,13 @@ exports.postsDetail =(req,res,next)=>{
                 message : "User doesn't found"
             })
         }
-        else { 
+        else { console.log(user , " n  puouo")
             const Post = new postSchema({
                 _id : new mongoose.Types.ObjectId(),
                  title : req.body.title,
                  tag : req.body.tag,
                  detail : req.body.detail,
-                 author : req.body.userID,
+                 author : myUserId.userId,
                  post : req.body.post,
                  datePost : new Date()
             })
@@ -139,6 +151,7 @@ exports.getFoundKey=(req,res,next)=>{
         res.status(200).json({
             event : result.map(doc =>{
                 return{
+                    postId : doc._id,
                     title :doc.title,
                     author :doc.author,
                     datePost : doc.datePost,
@@ -165,6 +178,7 @@ exports.getFoundCard=(req,res,next)=>{
         res.status(200).json({
             event : result.map(doc =>{
                 return{
+                    postId : doc._id,
                     title :doc.title,
                     author :doc.author,
                     datePost : doc.datePost,
@@ -191,6 +205,7 @@ exports.getFoundWallet=(req,res,next)=>{
         res.status(200).json({
             event : result.map(doc =>{
                 return{
+                    postId : doc._id,
                     title :doc.title,
                     author :doc.author,
                     datePost : doc.datePost,
@@ -217,6 +232,7 @@ exports.getFoundPhone=(req,res,next)=>{
         res.status(200).json({
             event : result.map(doc =>{
                 return{
+                    postId : doc._id,
                     title :doc.title,
                     author :doc.author,
                     datePost : doc.datePost,
@@ -243,6 +259,7 @@ exports.getFoundOther=(req,res,next)=>{
         res.status(200).json({
             event : result.map(doc =>{
                 return{
+                    postId : doc._id,
                     title :doc.title,
                     author :doc.author,
                     datePost : doc.datePost,
@@ -270,6 +287,7 @@ exports.getFindKey=(req,res,next)=>{
         res.status(200).json({
             event : result.map(doc =>{
                 return{
+                    postId : doc._id,
                     title :doc.title,
                     author :doc.author,
                     datePost : doc.datePost,
@@ -296,6 +314,7 @@ exports.getFindCard=(req,res,next)=>{
         res.status(200).json({
             event : result.map(doc =>{
                 return{
+                    postId : doc._id,
                     title :doc.title,
                     author :doc.author,
                     datePost : doc.datePost,
@@ -322,6 +341,7 @@ exports.getFindWallet=(req,res,next)=>{
         res.status(200).json({
             event : result.map(doc =>{
                 return{
+                    postId : doc._id,
                     title :doc.title,
                     author :doc.author,
                     datePost : doc.datePost,
@@ -348,6 +368,7 @@ exports.getFindPhone=(req,res,next)=>{
         res.status(200).json({
             event : result.map(doc =>{
                 return{
+                    postId : doc._id,
                     title :doc.title,
                     author :doc.author,
                     datePost : doc.datePost,
@@ -374,6 +395,7 @@ exports.getFindOther=(req,res,next)=>{
         res.status(200).json({
             event : result.map(doc =>{
                 return{
+                    postId : doc._id,
                     title :doc.title,
                     author :doc.author,
                     datePost : doc.datePost,
